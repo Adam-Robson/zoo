@@ -1,17 +1,7 @@
 'use client';
 
 import { useState, useEffect, createContext, useContext } from 'react';
-
-export type ThemeType = 'light' | 'dark';
-
-export type ThemeContextType = {
-    theme: ThemeType;
-    setTheme: (theme: ThemeType) => void;
-}
-
-export type ThemeProviderType = {
-    children: React.ReactNode;
-}
+import type { ThemeType, ThemeContextType, ThemeProviderType } from '@/_types/theme-provider';
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
@@ -35,7 +25,7 @@ export function ThemeProvider({ children }: ThemeProviderType) {
     }
     
     return (
-        <ThemeContext.Provider value={{ theme, setTheme: toggleTheme }}>
+        <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
             {children}
         </ThemeContext.Provider>
     )
